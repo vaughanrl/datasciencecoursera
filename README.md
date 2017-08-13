@@ -1,3 +1,3 @@
 # datasciencecoursera
-## this is a markdowni file
+## this is a markdown file
 repo for JHU Data Science course on Coursera
