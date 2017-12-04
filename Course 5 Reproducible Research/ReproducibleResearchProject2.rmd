@@ -2,9 +2,7 @@
 title: "Storm Data Evaluation"
 author: "Ron Vaughan"
 date: "December 3, 2017"
-output:
-  md_document:
-    variant: markdown_github
+output: html_document
 ---
 ## 1: Synopsis
 The goal is to explore the [NOAA Storm Database](https://www.ncdc.noaa.gov/stormevents/) and answer questions about severe weather events the effects of severe weather events on both population and economy. The database covers the time period between 1950 and November 2011.
@@ -19,9 +17,9 @@ The following analysis investigates which types of severe weather events (EVTYPE
 
 ## 2: Data Processing
 
-Source Data: [Storm Data](https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2)
-National Weather Service [Storm Data Documentation](https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2Fpd01016005curr.pdf)
-National Climatic Data Center Stsorm Events [FAQ](https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2FNCDC%20Storm%20Events-FAQ%20Page.pdf)
+* Source Data: [Storm Data](https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2)
+* National Weather Service [Storm Data Documentation](https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2Fpd01016005curr.pdf)
+* National Climatic Data Center Stsorm Events [FAQ](https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2FNCDC%20Storm%20Events-FAQ%20Page.pdf)
 
 ### 2.1: Data Loading
 
@@ -94,7 +92,7 @@ economicDamage <- ddply(stormDR, .(EVTYPE), summarize,propDamage = sum(propDamag
 economicDamage <- economicDamage[(economicDamage$propDamage > 0 | economicDamage$cropDamage > 0), ]
 ```
 
-Econommic data is sorted.
+Economic data is sorted.
 ```{r}
 propDmgSorted <- economicDamage[order(economicDamage$propDamage, decreasing = TRUE), ]
 cropDmgSorted <- economicDamage[order(economicDamage$cropDamage, decreasing = TRUE), ]
